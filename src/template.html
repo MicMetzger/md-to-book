@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link title="light-theme" rel="stylesheet" href="../../css/github.min.css?v=1.0" />
+    <link disabled="disabled" title="dark-theme" rel="stylesheet" href="../../css/github-dark-dimmed.min.css?v=1.0" />
+    <link disabled="disabled" title="contrast-theme" rel="stylesheet" href="../../css/github-dark.min.css?v=1.0" />
+    <link rel="stylesheet" href="../../css/theme.css?v=1.3" />
+    <link rel="stylesheet" href="../../css/style.css?v=1.3" />
+    <script src="../../js/theme.js?v=1.3"></script>
+    <script src="../../js/audio.js?v=1.2"></script>
+    <script src="../../js/highlight.min.js?v=1.0"></script>
+  </head>
+  <body>
+    <div class="no-print" style="float: right">
+      <button id="toggle-theme"><img src="../../icons/mdi/palette.svg" /></button>
+      <button id="toggle-font"><img src="../../icons/mdi/custom_typography.svg" /></button>
+      <button id="toggle-play"><img src="../../icons/mdi/play_circle.svg" /></button>
+    </div>
+
+    <section>{{md}}</section>
+
+    <script>
+      hljs.highlightAll()
+    </script>
+
+    <!-- empty blockquote for writing -->
+    <script>
+      const q = document.querySelectorAll('blockquote')
+      q.forEach(r => {
+        if (r.innerHTML.trim().length === 0) {
+          r.style.height = '5em'
+        }
+      })
+    </script>
+
+    <!-- add class to the sql tables -->
+    <!-- adjust style of NULL fields -->
+    <script>
+      const tables = /* @type Array<HTMLTableElement> */ Array.from(document.getElementsByTagName('table'))
+      tables.forEach(table => {
+        const th = table.querySelector('th')
+        if (th.innerHTML === 'id') table.classList.add('sql-table')
+        const tds = /* @type Array<HTMLTableCellElement> */ Array.from(table.querySelectorAll('td'))
+        tds.forEach(td => {
+          if (td.innerHTML === 'NULL') {
+            td.innerHTML = '[NULL]'
+            td.style.fontFamily = 'monospace'
+            td.style.color = '#7f7f7f'
+            td.classList.add('font-size-16')
+          }
+        })
+      })
+    </script>
+    <!-- lazy load images -->
+    <script src="../../lib/lazysizes.min.js?v=5.1.2"></script>
+  </body>
+</html>

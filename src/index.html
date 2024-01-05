@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/theme.css?v=1.3" />
+    <link rel="stylesheet" href="./css/style.css?v=1.3" />
+    <script src="./js/theme.js?v=1.3"></script>
+    <style>
+      h2 {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="no-print" style="float: right">
+      <button id="toggle-theme"><img src="./icons/mdi/palette.svg" /></button>
+      <button id="toggle-font"><img src="./icons/mdi/custom_typography.svg" /></button>
+    </div>
+
+    <h1>{{BOOK_NAME}}</h1>
+    <h2>Chapters</h2>
+    <ul class="chapters-list">
+      {{CHAPTERS}}
+    </ul>
+    <h2>PDF</h2>
+    <p><a href="./book/{{BOOK_NAME_FILE}}.pdf">Download PDF</a></p>
+  </body>
+</html>
